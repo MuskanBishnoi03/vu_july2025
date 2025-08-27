@@ -1,58 +1,39 @@
 
 # Welcome to your CDK Python project!
 
-This is a blank project for CDK development with Python.
+# AWS CDK – 1-URL Website Canary (Python)
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+This project deploys one Python *AWS Lambda* that checks the health of *Medilink's website* every 5 minutes and sends two CloudWatch metrics per site:
 
-This project is set up like a standard Python project.  The initialization
-process also creates a virtualenv within this project, stored under the `.venv`
-directory.  To create the virtualenv it assumes that there is a `python3`
-(or `python` for Windows) executable in your path with access to the `venv`
-package. If for any reason the automatic creation of the virtualenv fails,
-you can create the virtualenv manually.
+- *Availability* – 1 (HTTP 2xx) or 0 (failure/timeout)
+- *LatencyMs* – end-to-end HTTP time in *milliseconds*
 
-To manually create a virtualenv on MacOS and Linux:
+Default target (editible in modules/sites.json):
+- *Medilinks* – https://medilinks.com.au/
+-
 
-```
-$ python -m venv .venv
-```
+---
 
-After the init process completes and the virtualenv is created, you can use the following
-step to activate your virtualenv.
+## What gets deployed
 
-```
-$ source .venv/bin/activate
-```
+- *Lambda*: WebCanary (handler canary.handler)  
+  Reads modules/sites.json, probes each URL (with a friendly User-Agent), and publishes metrics to the *Canary* namespace with SiteName=<name>.
 
-If you are a Windows platform, you would activate the virtualenv like this:
+- *EventBridge Rule: CanarySchedule – runs **every 5 minutes*.
 
-```
-% .venv\Scripts\activate.bat
-```
+- *CloudWatch Metrics* (per site):  
+  Canary/Availability (Average 5m) and Canary/LatencyMs (p95 5m).
 
-Once the virtualenv is activated, you can install the required dependencies.
+- *CloudWatch Alarms* (per site):  
+  - *Latency p95 > 2000 ms* (1× 5-minute period, missing data = not breaching)  
+  - *Availability < 1.0* (there was at least one failure in the 5-minute window)
 
-```
-$ pip install -r requirements.txt
-```
+- *CloudWatch Dashboard*: url-canary-dashboard  
+  One graph per site (Latency on left axis, Availability on right axis), two KPI tiles per site, plus an Alarm Status widget.
 
-At this point you can now synthesize the CloudFormation template for this code.
+---
 
-```
-$ cdk synth
-```
 
-To add additional dependencies, for example other CDK libraries, just add
-them to your `setup.py` file and rerun the `pip install -r requirements.txt`
-command.
 
-## Useful commands
 
- * `cdk ls`          list all stacks in the app
- * `cdk synth`       emits the synthesized CloudFormation template
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk docs`        open CDK documentation
 
-Enjoy!
