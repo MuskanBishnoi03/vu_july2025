@@ -76,7 +76,10 @@ The table would look like this
 
 # What operaters can check:
 -For the cloudwatch metrics, they can check real time metrics on cloudwatch dashboard. Which will going to show the graph for availability and latency. 
+
 -For SNS and  alarms, they can check SNS in AWS consol which will show topics and subscription. In subscription, we can check the email where it is going to give notifucations.
+
 -then check email for notification.
+
 -For the tables, they can check dynamodb tables and then go to explore items, it will show the table content there for all the alarms that are logged. 
 
