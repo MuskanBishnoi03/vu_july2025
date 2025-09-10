@@ -35,7 +35,8 @@ Default target (editible in modules/sites.json):
   and Canary/LatencyMs (p95 5m). For latency, it will show alarm every 2 secs if it takes more time to load. 
   Here we used timeout of 30s and then we also had to attach it IAM policies
 
-  ![cloudWatch Metrics](images/cloudwatch_metrics.png)
+<img width="1919" height="810" alt="image" src="https://github.com/user-attachments/assets/57ae73d8-de4c-47f9-8189-965755d38a72" />
+
 
 - *CloudWatch Alarms* (per site):  
   - After putting the data into metrics we will going to use alarms. They will get triggered if  
@@ -43,7 +44,8 @@ Default target (editible in modules/sites.json):
   - *Availability < 1 or 0, if it shows 1 it is working and if 0 then not.
   Each alarm is bound to give us SNS notifications 
 
-  ![CloudWatch alarm](cloudwatch_alarm.png)
+<img width="1919" height="928" alt="image" src="https://github.com/user-attachments/assets/8fb4708b-efa4-47d9-9462-5ded49071314" />
+
 
 - *CloudWatch Dashboard*: url-canary-dashboard  
   -One graph per site (Latency on left axis, Availability on right axis)
@@ -51,7 +53,8 @@ Default target (editible in modules/sites.json):
    With these graphs, its easy to analyse the alarms.
 
   Like for medilink, the graph would be
-  ![cloudwatch dashboard](cloudwatch_dashboard.png)
+  <img width="1846" height="934" alt="image" src="https://github.com/user-attachments/assets/71c8d075-2ff4-4f07-b929-b2c718a93e09" />
+
 
 
 - *SNS*:
@@ -68,7 +71,8 @@ The billing mode in this will be pay per request
 
 The table would look like this
 
-![Dynamodb table](Dynamodb.png)
+<img width="1910" height="951" alt="image" src="https://github.com/user-attachments/assets/40ee6f37-0c68-426b-970a-15d658cf5417" />
+
 
 # What operaters can check:
 -For the cloudwatch metrics, they can check real time metrics on cloudwatch dashboard. Which will going to show the graph for availability and latency. 
