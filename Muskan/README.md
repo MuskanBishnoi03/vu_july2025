@@ -1,4 +1,4 @@
-
+AWS Webhealth Monitoring System 
 # AWS CDK – 3-URL Website Canary (Python)
 
 This will going to moniter availability and latency for the 3 websites and then publish those metrics to cloudwatch, trigger alarms if it crosses the given threshold , sends notification via SNS and then log those alrms in a dynamodb table format. 
