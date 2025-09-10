@@ -1,0 +1,19 @@
+
+
+
+
+
+[
+  {
+    "SITE_NAME": "Medilinks",
+    "TARGET_URL": "https://medilinks.com.au/"
+  },
+  {
+    "SITE_NAME": "Skiptq",
+    "TARGET_URL": "https://skiptq.com/"
+  },
+  {
+    "SITE_NAME": "LeetCode",
+    "TARGET_URL": "https://leetcode.com/"
+  }
+]
