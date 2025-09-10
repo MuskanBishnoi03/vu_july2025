@@ -56,6 +56,7 @@ Default target (editible in modules/sites.json):
 
 - *SNS*:
    When the metrice is published and there is any alarms, then it will automatically gets notified. We will going to get notifications on oiur registered email. These notifications will help in detecting and solving the issues in less time.
+<img width="1915" height="917" alt="image" src="https://github.com/user-attachments/assets/ce4b4b00-e12b-4c10-932c-d28c2730a53a" />
 
 - Alarm Logger: We used one sepererate file alarms to write  alarms. This will also going to  write event data  into dynamodb
   And then this file also have the dynamodb table access and will  insert alarm events into dynamodb table with an unique id. 
